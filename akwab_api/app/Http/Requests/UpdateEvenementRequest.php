@@ -4,6 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Contracts\Validation\Validator;
 
 class UpdateEvenementRequest extends FormRequest
 {
@@ -32,5 +34,13 @@ class UpdateEvenementRequest extends FormRequest
             'image'                    => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'id_categorie'             => 'sometimes|exists:categories,id_categorie',
         ];
+    }
+        protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json([
+            'success' => false,
+            'message' => 'Erreur de validation',
+            'errors' => $validator->errors()
+        ], 422));
     }
 }
