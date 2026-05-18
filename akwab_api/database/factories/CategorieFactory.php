@@ -18,7 +18,12 @@ class CategorieFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'libelle' => fake()->unique()->randomElement([
+                'Musique',
+                'Sport',
+                'Art',
+                'Technologie',
+                'Cuisine']),
         ];
     }
 }

@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Evenement;
 use App\Models\Reservation;
+use App\Models\Utilisateur;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +20,11 @@ class ReservationFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'date_reservation' => fake()->date(),
+            'nombre_ticket_pris' => fake()->numberBetween(1, 10),
+            'prix_total' => fake()->randomFloat(5000, 50000),
+            'id_utilisateur' => Utilisateur::factory(),
+            'id_evenement' => Evenement::factory(),
         ];
     }
 }
