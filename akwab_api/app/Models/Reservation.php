@@ -2,13 +2,17 @@
 
 namespace App\Models;
 
+use Hamcrest\Util;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+
 
 class Reservation extends Model
 {
     /** @use HasFactory<\Database\Factories\ReservationFactory> */
     use HasFactory;
+
+    protected $table = 'reservations';
 
     protected $primaryKey = 'id_reservation';
 
@@ -20,13 +24,13 @@ class Reservation extends Model
         'id_evenement'
     ];
 
-    // public function utilisateur()
-    // {
-    //     return $this->belongsTo(Utilisateur::class, 'id_utilisateur');
-    // }
+    public function utilisateur()
+    {
+        return $this->belongsTo(Utilisateur::class, 'id_utilisateur');
+    }
 
-    // public function evenement()
-    // {
-    //     return $this->belongsTo(Evenement::class, 'id_evenement');
-    // }
+    public function evenement()
+    {
+        return $this->belongsTo(Evenement::class, 'id_evenement');
+    }
 }

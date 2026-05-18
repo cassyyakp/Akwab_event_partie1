@@ -10,6 +10,8 @@ class Categorie extends Model
     /** @use HasFactory<\Database\Factories\CategorieFactory> */
     use HasFactory;
 
+    protected $table = 'categories';
+
     protected $primaryKey = 'id_categorie';
 
     protected $fillable = [
