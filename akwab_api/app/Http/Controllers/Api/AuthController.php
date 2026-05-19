@@ -15,14 +15,13 @@ class AuthController extends Controller
 {
     public function register(RegisterRequest $request)
     {
-        $utilisateur = Utilisateur::create([
-            'nom'          => $request->nom,
-            'prenoms'      => $request->prenoms,
-            'email'        => $request->email,
-            'telephone'    => $request->telephone,
-            'mot_de_passe' => Hash::make($request->mot_de_passe),
-            'id_role'      => 2,
-        ]);
+        $utilisateur = Utilisateur::create(array_merge(
+            $request->validated(),
+            [
+                'mot_de_passe' => Hash::make($request->mot_de_passe),
+                'id_role'      => 2,
+            ]
+        ));
 
         $token = $utilisateur->createToken('auth_token')->plainTextToken;
 
@@ -36,14 +35,13 @@ class AuthController extends Controller
 
     public function registerAdmin(StoreUtilisateurRequest $request)
     {
-        $utilisateur = Utilisateur::create([
-            'nom'          => $request->nom,
-            'prenoms'      => $request->prenoms,
-            'email'        => $request->email,
-            'telephone'    => $request->telephone,
-            'mot_de_passe' => Hash::make($request->mot_de_passe),
-            'id_role'      => 1,
-        ]);
+        $utilisateur = Utilisateur::create(array_merge(
+            $request->validated(),
+            [
+                'mot_de_passe' => Hash::make($request->mot_de_passe),
+                'id_role'      => 1,
+            ]
+        ));
 
         $token = $utilisateur->createToken('auth_token')->plainTextToken;
 
@@ -76,13 +74,13 @@ class AuthController extends Controller
         ]);
     }
 
-   public function logout(Request $request)
-{
-    $request->user()->tokens()->delete();
+    public function logout(Request $request)
+    {
+        $request->user()->tokens()->delete();
 
-    return response()->json([
-        'success' => true,
-        'message' => 'Déconnexion réussie',
-    ]);
-}
+        return response()->json([
+            'success' => true,
+            'message' => 'Déconnexion réussie',
+        ]);
+    }
 }
