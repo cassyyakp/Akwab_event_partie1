@@ -12,16 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('evenements', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_evenement');
             $table->string('nom');
             $table->string('lieu');
             $table->date('date');
-            $table->string('description');
+            $table->text('description');
             $table->decimal('prix_ticket', 10, 2);
             $table->integer('nombre_ticket_disponible');
-            $table->string('image');
-            $table->foreignId('id_categorie')
-                ->constrained('categories')
+            $table->string('image')->nullable();
+            $table->unsignedBigInteger('id_categorie');
+            $table->foreign('id_categorie')
+                ->references('id_categorie')
+                ->on('categories')
                 ->onDelete('cascade');
             $table->timestamps();
         });

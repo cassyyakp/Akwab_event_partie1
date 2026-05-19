@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Models;
-
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Utilisateur extends Authenticatable
 {
+    use HasFactory;
     protected $table = 'utilisateurs';
     protected $primaryKey = 'id_utilisateurs';
 
@@ -15,6 +16,7 @@ class Utilisateur extends Authenticatable
         'email',
         'telephone',
         'mot_de_passe',
+        'id_role'
     ];
 
     protected $hidden = [

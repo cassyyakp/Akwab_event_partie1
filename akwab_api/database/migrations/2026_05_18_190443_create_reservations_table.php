@@ -15,12 +15,17 @@ return new class extends Migration
             $table->id();
             $table->date('date_reservation');
             $table->integer('nombre_ticket_pris');
-            $table->decimal('prix_total', 10, 2);
-            $table->foreignId('id_utilisateur')
-                ->constrained('utilisateurs')
+            $table->decimal('prix_total', 15, 2);
+            $table->unsignedBigInteger('id_utilisateur')->nullable();
+            $table->foreign('id_utilisateur')
+                ->references('id_utilisateurs')
+                ->on('utilisateurs')
                 ->onDelete('cascade');
-                $table->foreignId('id_evenement')
-                ->constrained('evenements')
+
+            $table->unsignedBigInteger('id_evenement')->nullable();
+            $table->foreign('id_evenement')
+                ->references('id_evenement')
+                ->on('evenements')
                 ->onDelete('cascade');
             $table->timestamps();
         });
