@@ -25,7 +25,7 @@ class UpdateCategorieRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'type' => 'sometimes|string|max:255|unique:categories,type',
+            'libelle' => 'sometimes|string|max:255|unique:categories,libelle',
         ];
     }
     protected function failedValidation(Validator $validator)

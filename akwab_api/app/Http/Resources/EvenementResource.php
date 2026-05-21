@@ -22,7 +22,7 @@ class EvenementResource extends JsonResource
             'description'              => $this->description,
             'prix_ticket'              => $this->prix_ticket,
             'nombre_ticket_disponible' => $this->nombre_ticket_disponible,
-            'image'                    => $this->image,
+            'image'                    => $this->image ? asset('storage/' . $this->image) : null,
             'categorie'                => $this->categorie,
         ];
     }

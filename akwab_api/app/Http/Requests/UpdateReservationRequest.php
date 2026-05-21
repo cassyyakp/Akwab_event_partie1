@@ -28,7 +28,7 @@ class UpdateReservationRequest extends FormRequest
             'date_reservation' => 'sometimes|date',
             'nombre_ticket_pris' => 'sometimes|integer|min:1',
             'prix_total' => 'sometimes|numeric|min:0',
-            'id_utilisateur' => 'sometimes|exists:utilisateurs,id_utilisateur',
+            'id_utilisateurs' => 'sometimes|exists:utilisateurs,id_utilisateurs',
             'id_evenement' => 'sometimes|exists:evenements,id_evenement',
         ];
     }

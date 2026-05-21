@@ -20,13 +20,13 @@ class Reservation extends Model
         'date_reservation',
         'nombre_ticket_pris',
         'prix_total',
-        'id_utilisateur',
+        'id_utilisateurs',
         'id_evenement'
     ];
 
     public function utilisateur()
     {
-        return $this->belongsTo(Utilisateur::class, 'id_utilisateur');
+        return $this->belongsTo(Utilisateur::class, 'id_utilisateurs');
     }
 
     public function evenement()

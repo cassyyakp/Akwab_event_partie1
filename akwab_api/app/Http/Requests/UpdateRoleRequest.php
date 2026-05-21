@@ -25,7 +25,7 @@ class UpdateRoleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'libelle' => 'sometimes|string|max:255|unique:roles,libelle',
+            'type' => 'sometimes|string|max:255|unique:roles,type',
         ];
     }
 

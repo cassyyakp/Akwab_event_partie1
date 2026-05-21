@@ -23,7 +23,7 @@ class ReservationFactory extends Factory
             'date_reservation' => fake()->date(),
             'nombre_ticket_pris' => fake()->numberBetween(1, 10),
             'prix_total' => fake()->randomFloat(2, 1000, 50000),
-            'id_utilisateur' => Utilisateur::factory(),
+            'id_utilisateurs' => Utilisateur::factory(),
             'id_evenement' => Evenement::factory(),
         ];
     }

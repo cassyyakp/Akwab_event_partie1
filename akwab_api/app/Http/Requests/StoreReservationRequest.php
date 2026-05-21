@@ -28,7 +28,7 @@ class StoreReservationRequest extends FormRequest
             'date_reservation' => 'required|date',
             'nombre_ticket_pris' => 'required|integer|min:1',
             'prix_total' => 'required|numeric|min:0',
-            'id_utilisateur' => 'required|exists:utilisateurs,id_utilisateur',
+            'id_utilisateurs' => 'required|exists:utilisateurs,id_utilisateurs',
             'id_evenement' => 'required|exists:evenements,id_evenement',
         ];
     }

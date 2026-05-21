@@ -18,9 +18,10 @@ class Evenement extends Model
         'prix_ticket',
         'nombre_ticket_disponible',
         'image',
+        'id_categorie'
     ];
 
-    
+
 
     public function categorie()
     {
